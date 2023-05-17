@@ -1,0 +1,10 @@
+<plist version="1.0">
+    <dict>
+
+        <key>com.apple.developer.associated-domains</key>
+        <array>
+            <string>applinks:distriqt-test.sng.link</string>
+        </array>
+
+    </dict>
+</plist>

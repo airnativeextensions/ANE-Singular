@@ -1,0 +1,58 @@
+{
+    "identifier": "com.distriqt.test",
+    "name": "TestSingular",
+    "filename": "TestSingular",
+    "version": "0.0.1",
+    "versionLabel": "",
+    "dependencies": [
+        {
+            "version": "1.9.0",
+            "id": "androidx.core"
+        },
+        {
+            "version": "2.2.0",
+            "id": "com.android.installreferrer"
+        },
+        {
+            "version": "5.2.0",
+            "id": "com.distriqt.IDFA"
+        },
+        {
+            "version": "18.0.101",
+            "id": "com.distriqt.playservices.AdsIdentifier"
+        },
+        {
+            "version": "16.1.201",
+            "id": "com.distriqt.playservices.AppSet"
+        },
+        {
+            "version": "18.1.1",
+            "id": "com.distriqt.playservices.Base"
+        },
+        {
+            "version": "2.8.901",
+            "id": "com.google.code.gson"
+        },
+        {
+            "version": "4.1.1",
+            "id": "feathersui"
+        },
+        {
+            "version": "4.1.1",
+            "id": "feathersui_MetalWorksMobileTheme"
+        },
+        {
+            "version": "2.7.0",
+            "id": "starling"
+        }
+    ],
+    "configuration": {
+        "userTrackingUsageDescription": {
+            "name": "userTrackingUsageDescription",
+            "required": "true",
+            "value": "Allows us to deliver personalized ads for you."
+        }
+    },
+    "repositories": [],
+    "deployOptions": {}
+}
