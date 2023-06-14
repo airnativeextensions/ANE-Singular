@@ -99,6 +99,8 @@ package com.distriqt.test.singular
 			addAction( "Get IDFA", _tests.getIDFA );
 
 			addAction( "Init", _tests.init );
+			addAction( "set :CustomUserId", _tests.setCustomUserId );
+			addAction( "unset :CustomUserId", _tests.unsetCustomUserId );
 			addAction( "standard :Event", _tests.logEvent );
 			addAction( "standard no attr :Event", _tests.logEventNoAttributes );
 			addAction( "custom :Event", _tests.logCustomEvent );

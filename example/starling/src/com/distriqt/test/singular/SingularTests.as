@@ -113,6 +113,16 @@ package com.distriqt.test.singular
 		}
 
 
+		public function setCustomUserId():void
+		{
+			Singular.instance.setCustomUserId( "distriqt_tester_custom" );
+		}
+
+		public function unsetCustomUserId():void
+		{
+			Singular.instance.unsetCustomUserId();
+		}
+
 		private function linkResolvedHandler( event:SingularLinkEvent ):void
 		{
 			log( "linkResolvedHandler()" );
