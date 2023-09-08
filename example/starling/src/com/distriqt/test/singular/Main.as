@@ -105,6 +105,7 @@ package com.distriqt.test.singular
 			addAction( "standard no attr :Event", _tests.logEventNoAttributes );
 			addAction( "custom :Event", _tests.logCustomEvent );
 			addAction( "revenue  :Event", _tests.logRevenue );
+			addAction( "revenue from IAP :Event", _tests.logRevenueFromInAppBilling );
 			addAction( "revenue w product :Event", _tests.logRevenueWithProduct );
 			addAction( "create referrer short link", _tests.createReferrerShortLink );
 			addAction( "ad revenue", _tests.adRevenue );

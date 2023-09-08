@@ -18,6 +18,7 @@ package com.distriqt.test.singular
 	import com.distriqt.extension.idfa.IDFA;
 	import com.distriqt.extension.idfa.TrackingAuthorisationStatus;
 	import com.distriqt.extension.idfa.events.IDFAEvent;
+	import com.distriqt.extension.inappbilling.Purchase;
 	import com.singular.Singular;
 	import com.singular.SingularAdData;
 	import com.singular.SingularAttributes;
@@ -170,6 +171,61 @@ package com.distriqt.test.singular
 					1.99
 			);
 			log( "logRevenue() = " + success );
+		}
+
+
+		public function logRevenueFromInAppBilling():void
+		{
+			var purchase:Purchase = new Purchase(); // TODO: Get your purchase object from InAppBilling v15.2.0+
+
+			var success:Boolean = Singular.instance.revenueWithPurchase(
+					purchase.toObject()
+			);
+			log( "logRevenueFromInAppBilling() = " + success );
+
+//			var purchaseObj:Object = {
+//				productId: "test.product",
+//
+//				transactionId: "1234567890",
+//				transactionReceipt: "AABBCCDD1234567890",
+//				signature: "aaaaaaaaaaaaaaaaaaaaaaa",
+//
+//				product: {
+//					currencyCode: "AUD",
+//					price: 1.23
+//				}
+//			}
+//			var success:Boolean = Singular.instance.revenueWithPurchase(
+//					purchaseObj
+//			);
+//			log( "logRevenueFromInAppBilling() = " + success );
+
+		}
+
+
+		public function logRevenueCustom():void
+		{
+//			var product:Product = new Product(); // product from InAppBilling
+//			var purchase:Purchase = new Purchase(); // purchase object from InAppBilling
+//
+//			var args:Object = {};
+//			args["is_revenue_event"] = true;
+//			args["pcc"] = product.currencyCode;
+//			if (Singular.instance.implementation == "iOS")
+//			{
+//				args["pti"] = purchase.transactionId;
+//				args["ptr"] = purchase.transactionReceipt;
+//				args["pk"] = purchase.productId;
+//				args["pp"] = product.price;
+//			}
+//			else
+//			{
+//				args["receipt_signature"] = purchase.signature;
+//				args["receipt"] = purchase.transactionId;
+//				args["r"] = product.price;
+//			}
+//
+//			var success:Boolean = Singular.instance.event( "__iap__", args );
 		}
 
 
