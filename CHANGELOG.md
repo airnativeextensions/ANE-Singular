@@ -1,3 +1,9 @@
+###### 2023.10.30 [v12.1.105]
+
+```
+fix(iap): update to data sent with revenue with purchase method
+```
+
 ###### 2023.09.08 [v12.1.104]
 
 ```
