@@ -15,9 +15,9 @@
 package com.distriqt.test.singular
 {
 	import com.distriqt.extension.core.Core;
-	import com.distriqt.extension.idfa.IDFA;
-	import com.distriqt.extension.idfa.TrackingAuthorisationStatus;
-	import com.distriqt.extension.idfa.events.IDFAEvent;
+//	import com.distriqt.extension.idfa.IDFA;
+//	import com.distriqt.extension.idfa.TrackingAuthorisationStatus;
+//	import com.distriqt.extension.idfa.events.IDFAEvent;
 	import com.distriqt.extension.inappbilling.Purchase;
 	import com.singular.Singular;
 	import com.singular.SingularAdData;
@@ -53,14 +53,13 @@ package com.distriqt.test.singular
 			{
 				Core.init();
 
-				log( "Singular Supported: " + Singular.isSupported );
-				if (Singular.isSupported)
-				{
-					log( "Singular Version:   " + Singular.service.version );
+				log( "Singular Supported:     " + Singular.isSupported );
+				if (!Singular.isSupported) return;
 
-					Singular.instance.addEventListener( SingularLinkEvent.RESOLVED, linkResolvedHandler );
-				}
+				log( "Singular.version:       " + Singular.service.version );
+				log( "Singular.nativeVersion: " + Singular.service.nativeVersion );
 
+				Singular.instance.addEventListener( SingularLinkEvent.RESOLVED, linkResolvedHandler );
 			}
 			catch (e:Error)
 			{
@@ -72,23 +71,23 @@ package com.distriqt.test.singular
 		public function getIDFA():void
 		{
 			log( "getIDFA()" );
-			IDFA.service.addEventListener( IDFAEvent.COMPLETE, idfaCompleteHandler );
-			IDFA.service.requestAuthorisation(
-					function ( status:String ):void
-					{
-						if (status == TrackingAuthorisationStatus.AUTHORISED)
-						{
-							IDFA.service.getIDFA();
-						}
-					}
-			);
+//			IDFA.service.addEventListener( IDFAEvent.COMPLETE, idfaCompleteHandler );
+//			IDFA.service.requestAuthorisation(
+//					function ( status:String ):void
+//					{
+//						if (status == TrackingAuthorisationStatus.AUTHORISED)
+//						{
+//							IDFA.service.getIDFA();
+//						}
+//					}
+//			);
 		}
 
-		private function idfaCompleteHandler( event:IDFAEvent ):void
-		{
-			log( "identifier: " + event.identifier );
-			log( "isLimitAdTrackingEnabled: " + event.isLimitAdTrackingEnabled );
-		}
+//		private function idfaCompleteHandler( event:IDFAEvent ):void
+//		{
+//			log( "identifier: " + event.identifier );
+//			log( "isLimitAdTrackingEnabled: " + event.isLimitAdTrackingEnabled );
+//		}
 
 
 		////////////////////////////////////////////////////////
@@ -101,6 +100,7 @@ package com.distriqt.test.singular
 			var config:SingularConfig = new SingularConfig( Config.apiKey, Config.secret )
 					.withCustomUserId( "distriqt_tester_01" )
 					.withLoggingEnabled()
+					.withLogLevel( SingularConfig.LOG_DEBUG )
 					.withGlobalProperty( "a_prop", "set from config", true )
 					.withGlobalProperty( "b_prop", "set from config", true )
 					.withSKAdNetworkEnabled( true )
@@ -119,10 +119,12 @@ package com.distriqt.test.singular
 			Singular.instance.setCustomUserId( "distriqt_tester_custom" );
 		}
 
+
 		public function unsetCustomUserId():void
 		{
 			Singular.instance.unsetCustomUserId();
 		}
+
 
 		private function linkResolvedHandler( event:SingularLinkEvent ):void
 		{
@@ -176,29 +178,29 @@ package com.distriqt.test.singular
 
 		public function logRevenueFromInAppBilling():void
 		{
-			var purchase:Purchase = new Purchase(); // TODO: Get your purchase object from InAppBilling v15.2.0+
-
-			var success:Boolean = Singular.instance.revenueWithPurchase(
-					purchase.toObject()
-			);
-			log( "logRevenueFromInAppBilling() = " + success );
-
-//			var purchaseObj:Object = {
-//				productId: "test.product",
+//			var purchase:Purchase = new Purchase(); // TODO: Get your purchase object from InAppBilling v15.2.0+
 //
-//				transactionId: "1234567890",
-//				transactionReceipt: "AABBCCDD1234567890",
-//				signature: "aaaaaaaaaaaaaaaaaaaaaaa",
-//
-//				product: {
-//					currencyCode: "AUD",
-//					price: 1.23
-//				}
-//			}
 //			var success:Boolean = Singular.instance.revenueWithPurchase(
-//					purchaseObj
+//					purchase.toObject()
 //			);
 //			log( "logRevenueFromInAppBilling() = " + success );
+
+			var purchaseObj:Object = {
+				productId: "test.product",
+
+				transactionId: "2000000519213703",
+				transactionReceipt: "MIJxxQYJKoZIhvcNAQcCoIJxtjCCcbICAQExDzANBglghkgBZQMEAgEFADCCYPsGCSqGSIb3DQEHAaCCYOwEgmDoMYJg5DAKAgEIAgEBBAIWADAKAgEUAgEBBAIMADALAgEBAgEBBAMCAQAwCwIBCwIBAQQDAgEAMAsCAQ8CAQEEAwIBADALAgEQAgEBBAMCAQAwCwIBGQIBAQQDAgEDMAwCAQoCAQEEBBYCNCswDAIBDgIBAQQEAgIAizANAgENAgEBBAUCAwJNEDANAgETAgEBBAUMAzEuMDAOAgEJAgEBBAYCBFAzMDIwEwIBAwIBAQQLDAkxMjkuNC4yNTYwGAIBBAIBAgQQ/mw3xkYVtaRI12gi/1ArhDAbAgEAAgEBBBMMEVByb2R1Y3Rpb25TYW5kYm94MBwCAQUCAQEEFEBlr8JfS6zZ8562t086Ud//9blxMB4CAQwCAQEEFhYUMjAyNC0wMi0wN1QxNzo0ODowNVowHgIBEgIBAQQWFhQyMDEzLTA4LTAxVDA3OjAwOjAwWjAhAgECAgEBBBkMF2JyLmNvbS5tZWdham9nb3MubW9iaWxlMEUCAQcCAQEEPQpY/9CVKguWI9R62f8mlaDF1N/zPTPZHcpbrUPPxEhJjOGp++mqFJbYm+gttKkbh29752JBjpnpiPIRf3UwUgIBBgIBAQRK5Ju2n8Ym5CQ3yf61SlOvHNtDkNbQ1j96fGZLGODj/1ee7BtwfK3HR6hphDLri3xZ+JdekF7IXBDEI1oiQQiVNBPYxoUk0AZ3inEwggFtAgERAg<\\M-b\\M^@\\M-&>",
+				signature: "aaaaaaaaaaaaaaaaaaaaaaa",
+
+				product: {
+					currencyCode: "AUD",
+					price: 1.23
+				}
+			}
+			var success:Boolean = Singular.instance.revenueWithPurchase(
+					purchaseObj
+			);
+			log( "logRevenueFromInAppBilling() = " + success );
 
 		}
 

@@ -1,0 +1,7 @@
+name: Singular-v12.5.5-da5fe576.kids/12.5.5
+env: release
+git_commit: da5fe576
+git_branch: kids/12.5.5
+version_name: 12.5.5
+version_code:1
+build_date: Thu, 25 Apr 2024 21:38:15 +0530

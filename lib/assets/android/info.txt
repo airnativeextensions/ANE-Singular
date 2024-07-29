@@ -1,7 +1,7 @@
-name: Singular-v12.1.1-54e277eee.master
+name: Singular-v12.5.5-bd97ee53.master
 env: release
-git_commit: 54e277eee
+git_commit: bd97ee53
 git_branch: master
-version_name: 12.1.1
+version_name: 12.5.5
 version_code:1
-build_date: Sun, 2 Apr 2023 10:39:28 +0300
+build_date: Wed, 17 Apr 2024 11:53:29 +0530

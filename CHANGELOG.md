@@ -1,3 +1,10 @@
+###### 2024.07.29 [v12.5.500]
+
+```
+feat(ios): update ios sdk v12.4.1 (note: requires usage of dynamic frameworks)
+feat(android): update android sdk v12.5.5
+```
+
 ###### 2023.10.30 [v12.1.105]
 
 ```

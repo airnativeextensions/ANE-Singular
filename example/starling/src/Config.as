@@ -25,9 +25,9 @@ package
 		//	VARIABLES
 		//
 
-		public static var apiKey:String = "megajogos_13a796df";
+		public static var apiKey:String = "";
 
-		public static var secret:String = "e1ab7c8f2e8083603c9d555170143e57";
+		public static var secret:String = "";
 
 	}
 

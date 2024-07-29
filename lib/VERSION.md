@@ -2,4 +2,4 @@
 
 | Extension | Version | Android Lib | iOS Lib |
 | --- | --- | --- | --- |
-| com.singular | 12.1.105 | 12.1.1 | 12.0.4 |
+| com.singular | 12.5.500 | 12.5.5 | 12.4.1 |
