@@ -26,17 +26,17 @@ The [documentation site](https://docs.airnativeextensions.com/docs/singular) for
 
 Quick Example: 
 
-```actionscript title="Initialise"
+```actionscript
 Singular.instance.init( 
     new SingularConfig( API_KEY, SECRET )
  );
 ```
 
-```actionscript title="Track an event"
+```actionscript 
 Singular.instance.event( SingularEvents.SUBSCRIBE );
 ```
 
-```actionscript title="Custom event with arguments"
+```actionscript
 Singular.instance.event(
             "bonus_points_earned",
             {
